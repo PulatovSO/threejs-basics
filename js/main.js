@@ -13,4 +13,15 @@ document.body.appendChild(renderer.domElement);
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
 
-renderer.render(scene, camera);
+// axes
+const axesHelper = new THREE.AxesHelper(5);
+scene.add(axesHelper);
+camera.position.set(0, 2, 5)
+
+// box geometry
+const boxGeometry = new THREE.BoxGeometry();
+const boxMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
+const box = new THREE.Mesh(boxGeometry, boxMaterial);
+scene.add(box);
+
+renderer.render( scene, camera );
