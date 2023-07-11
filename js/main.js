@@ -12,7 +12,8 @@ document.body.appendChild(renderer.domElement);
 
 // camera & scene
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.set(-10, 30, 30)
 
 // controls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -20,7 +21,6 @@ const controls = new OrbitControls(camera, renderer.domElement);
 // axes
 const axesHelper = new THREE.AxesHelper(5);
 scene.add(axesHelper);
-camera.position.set(0, 2, 5)
 controls.update();
 
 // box geometry
@@ -28,6 +28,12 @@ const boxGeometry = new THREE.BoxGeometry();
 const boxMaterial = new THREE.MeshBasicMaterial({color: 0x00ff00});
 const box = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(box);
+
+// plane geometry
+const planeGeometry = new THREE.PlaneGeometry(30, 30);
+const planeMaterial = new THREE.MeshBasicMaterial({color: 0xffffff})
+const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+scene.add(plane)
 
 // animation
 const animate = () => {
